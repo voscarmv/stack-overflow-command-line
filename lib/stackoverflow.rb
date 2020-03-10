@@ -295,8 +295,8 @@ module StackOverflowMod
                 # table << "jajajaj"
                 nb += 1
             end
-            table.sort.reverse
-            # table.to_s
+            
+            table.sort.reverse.map {|strings| strings.join(" : ")}.join("\n")
         end
 
         def question_viewer(question)
