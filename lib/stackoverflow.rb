@@ -287,12 +287,12 @@ module StackOverflowMod
                     else
                         score = 0
                     end
-                    t << ["[#{nb}]", "(#{score})", question['title'][0..60]]
+                    t << ["(#{score})", question['title'][0..60], question['link']]
                     nb += 1
                 end
                 t.style = {:padding_left => 2, :border_x => " ", :border_i => " ", :border_y => " "}
             end
-            puts table
+            table.to_s
         end
 
         def question_viewer(question)

@@ -2,5 +2,5 @@
 
 require_relative '../lib/stackoverflow'
 
-puts StackOverflowMod::Command.new.run("git flow")
-
+result = StackOverflowMod::Command.new.run("html css")
+puts result
