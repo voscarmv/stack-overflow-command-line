@@ -327,39 +327,40 @@ module StackOverflowMod
     end
 
     class Command
-        def run
-            return "Hi from StackOverflowMod"
+        def run(searchterms)
+            # return "Hi from StackOverflowMod"
             options = {:run => true}
-            OptionParser.new do |opts|
-                opts.banner = "** Usage: so [options] <search string> [<question_id>]"
-                opts.on("-h", "--help", "Help") do |v|
-                    help
-                    options[:run] = false
-                end
-                opts.on("-u", "--update", "Update local database") do |v|
-                    DBUpdater.new.update
-                    options[:run] = false
-                end
-                opts.on("-o", "--offline", "Offline mode") do |v|
-                    options[:offline] = true
-                end
-            end.parse!
+            # OptionParser.new do |opts|
+            #     opts.banner = "** Usage: so [options] <search string> [<question_id>]"
+            #     opts.on("-h", "--help", "Help") do |v|
+            #         help
+            #         options[:run] = false
+            #     end
+            #     opts.on("-u", "--update", "Update local database") do |v|
+            #         DBUpdater.new.update
+            #         options[:run] = false
+            #     end
+            #     opts.on("-o", "--offline", "Offline mode") do |v|
+            #         options[:offline] = true
+            #     end
+            # end.parse!
 
-            if ARGV.length < 1
-                help
-                options[:run] = false
-            end
+            # if ARGV.length < 1
+            #     help
+            #     options[:run] = false
+            # end
 
-            if options[:run]
-                # last argument is integer when user is specifing a question_nb from the results
-                question_nb = nil
-                if ARGV[-1] =~ /^[0-9]+$/
-                    question_nb = ARGV.pop.to_i
-                end
+            # if options[:run]
+            #     # last argument is integer when user is specifing a question_nb from the results
+            #     question_nb = nil
+            #     if ARGV[-1] =~ /^[0-9]+$/
+            #         question_nb = ARGV.pop.to_i
+            #     end
 
-                search_string = ARGV.join(' ')
-                search(search_string, question_nb, options)
-            end
+            #     search_string = ARGV.join(' ')
+            #     search(search_string, question_nb, options)
+            # end
+            search(searchterms, false, options)
         end
 
         def help
