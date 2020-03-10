@@ -282,6 +282,7 @@ module StackOverflowMod
 
             table = Terminal::Table.new do |t|
                 questions.each do |question|
+                    break if nb > 10
                     if question['score']
                         score = question['score'] > 0 ? "+#{question['score']}" : question['score'] 
                     else
