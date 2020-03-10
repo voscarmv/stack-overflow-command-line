@@ -280,20 +280,23 @@ module StackOverflowMod
         def questions_list(questions)
             nb = 1
 
-            table = Terminal::Table.new do |t|
-                questions.each do |question|
-                    break if nb > 10
-                    if question['score']
-                        score = question['score'] > 0 ? "+#{question['score']}" : question['score'] 
-                    else
-                        score = 0
-                    end
-                    t << ["(#{score})", question['title'], question['link']]
-                    nb += 1
+            # table = Terminal::Table.new do |t|
+            # table = Array.new do |t|
+            table = []
+            questions.each do |question|
+                # break if nb > 10
+                if question['score']
+                    score = question['score'] > 0 ? "+#{question['score']}" : question['score'] 
+                else
+                    score = 0
                 end
-                t.style = {:padding_left => 2, :border_x => " ", :border_i => " ", :border_y => " "}
+                # table << ["(#{score})", question['title'], question['link']]
+                table << [score.to_i, question['title'], question['link']]
+                # table << "jajajaj"
+                nb += 1
             end
-            table.to_s
+            table.sort.reverse
+            # table.to_s
         end
 
         def question_viewer(question)
