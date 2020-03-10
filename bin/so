@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'stackoverflow'
+require_relative '../lib/stackoverflow'
 
-StackOverflow::Command.new.run
+puts StackOverflowMod::Command.new.run
 

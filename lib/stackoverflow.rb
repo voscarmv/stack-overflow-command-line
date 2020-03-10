@@ -25,7 +25,7 @@ require 'terminal-table/import'
 require 'sqlite3'
 require 'optparse'
 
-module StackOverflow
+module StackOverflowMod
     class API
         def search(search_string)
             search_string = URI::encode(search_string)
@@ -328,6 +328,7 @@ module StackOverflow
 
     class Command
         def run
+            return "Hi from StackOverflowMod"
             options = {:run => true}
             OptionParser.new do |opts|
                 opts.banner = "** Usage: so [options] <search string> [<question_id>]"
